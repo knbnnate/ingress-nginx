@@ -77,7 +77,7 @@ var _ = framework.DescribeSetting("log-format-*", func() {
 		})
 	})
 
-	ginkgo.Context("Check log-format-upstream with log-format-escape-json", func() {
+	ginkgo.Context("Check log-format-upstream with log-format-escape-json and log-format-escape-none", func() {
 
 		ginkgo.It("log-format-escape-json enabled", func() {
 			f.SetNginxConfigMapData(map[string]string{
@@ -110,13 +110,13 @@ var _ = framework.DescribeSetting("log-format-*", func() {
 
 			f.WaitForNginxConfiguration(
 				func(cfg string) bool {
-					return !strings.Contains(cfg, "log_format upstreaminfo escape=json")
+					return !strings.Contains(cfg, "log_format upstreaminfo escape")
 				})
 
 			f.HTTPTestClient().
 				GET("/").
 				WithHeader("Host", host).
-				WithHeader("header3", `Here is "header3" with json escape`).
+				WithHeader("header3", `Here is "header3" with default escape`).
 				Expect().
 				Status(http.StatusOK)
 
