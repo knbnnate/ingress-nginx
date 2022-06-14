@@ -469,6 +469,10 @@ Sets the maximum number and size of buffers used for reading large client reques
 _References:_
 [https://nginx.org/en/docs/http/ngx_http_core_module.html#large_client_header_buffers](https://nginx.org/en/docs/http/ngx_http_core_module.html#large_client_header_buffers)
 
+## log-format-escape-none
+
+Sets if the escape parameter is disabled entirely for character escaping in variables ("true") or controlled by log-format-escape-json ("false") Sets the nginx [log format](https://nginx.org/en/docs/http/ngx_http_log_module.html#log_format).
+
 ## log-format-escape-json
 
 Sets if the escape parameter allows JSON ("true") or default characters escaping in variables ("false") Sets the nginx [log format](https://nginx.org/en/docs/http/ngx_http_log_module.html#log_format).
